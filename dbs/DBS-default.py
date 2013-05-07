@@ -7,12 +7,6 @@ from WMCore.Configuration import Configuration
 ROOTDIR = os.path.normcase(os.path.abspath(__file__)).rsplit('/', 3)[0]
 DBSVERSION = os.getenv('DBS3_VERSION')
 
-sys.path.append(os.path.join(ROOTDIR,'auth/dbs'))
-
-from DBSSecrets import dbs3_pl1_r
-from DBSSecrets import dbs3_dg_i2
-from DBSSecrets import dbs3_ig_i2
-
 config = Configuration()
 main = config.section_('main')
 main.application = 'dbs'
@@ -32,3 +26,4 @@ views = config.section_('views')
 
 data = views.section_('data')
 data.object = 'dbs.web.DBSRestApi.DBSRestApi'
+data.db = 'DBSSecrets.dbparam'
