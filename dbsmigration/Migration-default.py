@@ -45,4 +45,3 @@ db_instances = config.dbsmigration.database.section_('instances')
 for instance_name in config.dbsmigration.instances:
     create_instance_config(db_instances, instance_name)
 
-
