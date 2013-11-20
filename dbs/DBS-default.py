@@ -11,12 +11,12 @@ DBSVERSION = os.getenv('DBS3_VERSION')
 sys.path.append(os.path.join(ROOTDIR, 'auth/dbs'))
 
 ###global instance
-from DBSSecrets import dbs3_p1_i2
+from DBSSecrets import dbs3_pp2_r
 
 ###phys03 instance
 from DBSSecrets import dbs3_l_i2
 
-db_mapping = {'dev/global': dbs3_p1_i2,
+db_mapping = {'dev/global': dbs3_pp2_r,
               'dev/phys03': dbs3_l_i2}
 
 security_params = {'dev/global': {'reader': {},
