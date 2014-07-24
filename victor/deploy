@@ -1,0 +1,35 @@
+# vim: set ft=sh sw=2 ts=8 et :
+
+deploy_victor_deps()
+{
+  deploy admin
+  deploy backend
+}
+
+deploy_victor_prep()
+{
+  mkproj
+}
+
+deploy_victor_sw()
+{
+  deploy_pkg -a victor/victorSecrets.py -l victor comp cms+victor
+}
+
+deploy_victor_post()
+{
+  case $host in vocms13[89] | vocms140 ) disable ;; * ) enable ;; esac
+    (mkcrontab; sysboot) | crontab -
+}
+
+deploy_victor_auth()
+{
+  for i in victor3_p1_i2 victor3_l_i2; do
+    echo "$i = {'connectUrl' : {"
+    echo "      'reader' : 'oracle://reader:secret@instance',"
+    echo "      'writer' : 'oracle://writer:secret@instance'"
+    echo "       },"
+    echo "      'databaseOwner' : 'owner'"
+    echo "     }"
+  done
+}
